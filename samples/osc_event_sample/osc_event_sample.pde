@@ -13,13 +13,18 @@ boolean flag = false;
 void setup() {
   file = createWriter("test.csv");
   minim = new Minim(this);
-  player = minim.loadFile("./sample.mp3");
+  player = minim.loadFile("../sample.mp3");
+  
   player.play();
   flag = true;
-  delay(10000);
+  
+  delay(10000); // play music for 10 sec
   
   player.close();
   flag = false;
+  
+  file.flush();
+  file.close();
 }
 
 void draw() {
@@ -32,10 +37,11 @@ void stop(){
 
 void oscEvent(OscMessage msg) {
   if (flag == true && msg.checkAddrPattern("/muse/elements/alpha_relative")) {
-    float avarage_alpha = 0;
+    float alpha_value_sum = 0;
     for (int i = 0; i < 4; i++) {
-      avarage_alpha += msg.get(i).floatValue();
+      alpha_value_sum += msg.get(i).floatValue();
     }
-    fila.print(avarage_alpha);
+    file.print(alpha_value_sum);
+    file.print("\n");
   }
 }
