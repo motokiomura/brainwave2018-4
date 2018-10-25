@@ -11,7 +11,11 @@ OscP5 oscP5 = new OscP5(this, PORT);
 boolean flag = false;
 
 void setup() {
+<<<<<<< Updated upstream
   file = createWriter(args[0] + ".csv");
+=======
+  file = createWriter("test.csv");
+>>>>>>> Stashed changes
   minim = new Minim(this);
   String[] musics = {"fantastic_baby", "rock_ballad_of_singer", "senbonzakura"};
   int[] start_times = {35200, 86000, 57300};
