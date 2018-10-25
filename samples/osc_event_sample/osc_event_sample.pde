@@ -11,7 +11,7 @@ OscP5 oscP5 = new OscP5(this, PORT);
 boolean flag = false;
 
 void setup() {
-  file = createWriter("test1.csv");
+  file = createWriter(args[0] + ".csv");
   minim = new Minim(this);
   String[] musics = {"fantastic_baby", "rock_ballad_of_singer", "senbonzakura"};
   int[] start_times = {35200, 86000, 57300};
