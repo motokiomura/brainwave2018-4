@@ -13,9 +13,9 @@ boolean flag = false;
 void setup() {
   file = createWriter(args[0] + ".csv");
   minim = new Minim(this);
-  String[] musics = {"fantastic_baby", "rock_ballad_of_singer", "senbonzakura"};
-  int[] start_times = {35200, 86000, 57300};
-  int[] play_time = {12800, 13200, 12500};
+  String[] musics = {"fantastic_baby", "rock_ballad_of_singer", "senbonzakura", "edm"};
+  int[] start_times = {35200, 86000, 57300, 103000};
+  int[] play_time = {12800, 13200, 12500, 11500};
   
   for (int i = 0; i < musics.length; i++) {
     custom_play(musics[i], start_times[i], play_time[i]);
