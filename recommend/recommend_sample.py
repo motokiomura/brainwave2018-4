@@ -25,7 +25,7 @@ def favorite_genre(genre, input_wave):
         se = np.linalg.norm(inp-gen)
         #if  sim > max_value:
         if se < max_value:
-            max_value = sim
+            max_value = se
             max_genre = k
     return max_genre
 
