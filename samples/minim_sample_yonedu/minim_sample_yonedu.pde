@@ -5,7 +5,7 @@ AudioPlayer player;
  
 void setup(){
   minim = new Minim(this);
-  player = minim.loadFile("./sample.mp3");
+  player = minim.loadFile("./edm.mp3");
   while (true) {
     play();
   }
@@ -15,8 +15,8 @@ void draw() {
 }
 
 void play() {
-  player.play(60300);
-  delay(6000);
+  player.play(106000);
+  delay(10000);
 }
  
 void stop(){
