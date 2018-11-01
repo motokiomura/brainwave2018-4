@@ -15,9 +15,10 @@ void setup() {
   minim = new Minim(this);
   String[] musics = {"fantastic_baby", "rock_ballad_of_singer", "senbonzakura"};
   int[] start_times = {35200, 86000, 57300};
+  int[] play_time = {12800, 13200, 12500};
   
   for (int i = 0; i < musics.length; i++) {
-    custom_play(musics[i], start_times[i]);
+    custom_play(musics[i], start_times[i], play_time[i]);
   }
   
   file.flush();
@@ -26,12 +27,12 @@ void setup() {
   exit();
 }
 
-void custom_play(String file_name, int start_time) {
+void custom_play(String file_name, int start_time,int play_time) {
   player = minim.loadFile("../../music/" + file_name + ".mp3");
   player.play(start_time);
   flag = true;
   
-  delay(10000); // play music for 10 sec
+  delay(play_time); // play music for 10 sec
   
   player.close();
   flag = false;
@@ -54,6 +55,7 @@ void oscEvent(OscMessage msg) {
       if (!(Double.isNaN(msg.get(i).floatValue()))) {
         alpha_value_sum += msg.get(i).floatValue();
         count++;
+        print(msg.get(i).floatValue());
       }
     }
     
