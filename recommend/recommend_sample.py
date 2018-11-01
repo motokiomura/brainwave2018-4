@@ -15,7 +15,7 @@ def cos_sim(v1, v2):
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
 def favorite_genre(genre, input_wave):
-    max_value = 0
+    max_value = np.inf
     max_genre = ""
     for k,v in genre.items():
         chart_len = min(len(input_wave), len(genre[k]))
