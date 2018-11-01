@@ -7,17 +7,18 @@ import csv
 import sys
 
 
-len_tmp = 1000
+#len_tmp = 1000
 file_name = sys.argv[1]
 
 
 def cos_sim(v1, v2):
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
-def favorite_genre(genre, input_wave, chart_len):
+def favorite_genre(genre, input_wave):
     max_value = 0
     max_genre = ""
     for k,v in genre.items():
+        chart_len = min(len(input_wave), len(genre[k]))
         sim = cos_sim(input_wave[:chart_len], genre[k][:chart_len])
         if  sim > max_value:
             max_value = sim
@@ -36,15 +37,15 @@ def read_input_wave(csv_file):
 
 def main():
     genre = {}
-    genre["jazz"] = np.random.rand(len_tmp)
-    genre["jpop"] = np.random.rand(len_tmp)
-    genre["hiphop"] = np.random.rand(len_tmp)
+    genre["K-POP"] = read_input_wave("recommend/motoki.csv")
+    genre["ROCK"] = read_input_wave("recommend/kambe.csv")
+    genre["VOCALOID"] = read_input_wave("recommend/aquan.csv")
 
     input_wave = read_input_wave(file_name)
 
-    chart_len = min(len_tmp, len(input_wave))
+    #chart_len = min(len_tmp, len(input_wave))
 
-    return favorite_genre(genre, input_wave, chart_len)
+    return favorite_genre(genre, input_wave)
 
 # def move_average(data, n):
 #     return np.convolve(data, np.ones(n)/float(n), 'valid')
