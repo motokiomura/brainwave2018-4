@@ -19,8 +19,12 @@ def favorite_genre(genre, input_wave):
     max_genre = ""
     for k,v in genre.items():
         chart_len = min(len(input_wave), len(genre[k]))
-        sim = cos_sim(input_wave[:chart_len], genre[k][:chart_len])
-        if  sim > max_value:
+        #sim = cos_sim(input_wave[:chart_len], genre[k][:chart_len])
+        inp = np.array(input_wave[:chart_len])
+        gen = np.array(genre[k][:chart_len])
+        se = np.linalg.norm(inp-gen)
+        #if  sim > max_value:
+        if se < max_value:
             max_value = sim
             max_genre = k
     return max_genre
