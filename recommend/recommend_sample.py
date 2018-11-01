@@ -37,9 +37,10 @@ def read_input_wave(csv_file):
 
 def main():
     genre = {}
-    genre["K-POP"] = read_input_wave("recommend/motoki.csv")
-    genre["ROCK"] = read_input_wave("recommend/kambe.csv")
-    genre["VOCALOID"] = read_input_wave("recommend/aquan.csv")
+    genre["K-POP"] = read_input_wave("recommend/kpop.csv")
+    genre["ROCK"] = read_input_wave("recommend/rock.csv")
+    genre["VOCALOID"] = read_input_wave("recommend/vocaloid.csv")
+    genre["EDM"] = read_input_wave(("recommend/edm.csv"))
 
     input_wave = read_input_wave(file_name)
 
